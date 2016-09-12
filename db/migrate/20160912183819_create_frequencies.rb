@@ -3,7 +3,7 @@ class CreateFrequencies < ActiveRecord::Migration
     create_table :frequencies do |t|
       t.string :description
       t.integer :days
-      t.integer :how_often
+      t.integer :how_often, default: 1
 
       t.timestamps null: false
     end
