@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp
 /.idea
+/config/secrets.yml
+app/models/story.rb
+db/migrate/
