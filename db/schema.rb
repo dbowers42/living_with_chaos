@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913162958) do
+ActiveRecord::Schema.define(version: 20160913170303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20160913162958) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "story_id"
+    t.integer  "frequency_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "schedules", ["frequency_id"], name: "index_schedules_on_frequency_id", using: :btree
+  add_index "schedules", ["story_id"], name: "index_schedules_on_story_id", using: :btree
 
   create_table "stories", force: :cascade do |t|
     t.string   "title"
@@ -50,4 +60,6 @@ ActiveRecord::Schema.define(version: 20160913162958) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "schedules", "frequencies"
+  add_foreign_key "schedules", "stories"
 end
