@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20160912183819) do
   create_table "frequencies", force: :cascade do |t|
     t.string   "description"
     t.integer  "days"
-    t.integer  "how_often"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "how_often",   default: 1
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "stories", force: :cascade do |t|
